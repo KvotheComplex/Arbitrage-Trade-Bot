@@ -1,7 +1,7 @@
-1. Install dependancies
-2. Install node.js at https://nodejs.org/en/download/ (You can check if you have this installed by typing node -v into your terminal)
-3. Install Truffle using npm install -g truffle (You can check if you have this installed by typing truffle -v into your terminal)
-4. Install Ganache-CLI using npm install -g ganache-cli (You can check if you have this installed with ganache-cli --version)
+1. Install node.js at https://nodejs.org/en/download/ (You can check if you have this installed by typing node -v into your terminal)
+2. Install dependancies by opening the terminal and typing 'npm install'
+3. Install Truffle using 'npm install -g truffle' (You can check if you have this installed by typing truffle -v into your terminal)
+4. Install Ganache-CLI using 'npm install -g ganache-cli' (You can check if you have this installed with ganache-cli --version)
 
 5. Get a speedy node to connect to the BSC from Moralis. You can sign up for this for free at https://admin.moralis.io
 
