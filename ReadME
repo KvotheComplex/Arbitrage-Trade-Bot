@@ -1,0 +1,25 @@
+1. Install dependancies
+2. Install node.js at https://nodejs.org/en/download/ (You can check if you have this installed by typing node -v into your terminal)
+3. Install Truffle using npm install -g truffle (You can check if you have this installed by typing truffle -v into your terminal)
+4. Install Ganache-CLI using npm install -g ganache-cli (You can check if you have this installed with ganache-cli --version)
+
+5. Get a speedy node to connect to the BSC from Moralis. You can sign up for this for free at https://admin.moralis.io
+
+6. Open a terminal in the root dir of this project and start the local environment using the following command 
+
+    'Ganache-cli -f wss://speedy-nodes-nyc.moralis.io/"Your Speedy Node"/bsc/mainnet/ws -u 0x72A53cDBBcc1b9efa39c834A540550e23463AAcB -p 8545'
+
+    (This will fork the BSC to your local environment and unlock an account holding Shib tokens we will use to manipulate the price on Panacakeswap and simulate an arbitrage opportunity. Be sure to enter your own speedy node information here or the fork will not work.)
+
+7. Open a second terminal and use the command truffle migrate --reset to compile and push the smart contracts to the local BSC fork. 
+   After this is complete you can use the same terminal to run the command 'node ./bot.js' to start the trade bot.
+
+8. The bot should now be subscribed to the local fork. Open a 3rd terminal and enter the command 'node ./scripts/manipulatePrice.js'
+   to see the action. This script will dump Shib tokens on Pancakeswap causing a price difference between Pancakeswap and Apeswap.
+   Your bot will see the swap event and recognize an arbitrage opportunity and call the arbitrage contract to trigger a flashloan 
+   from DODO. If everything ran correctly at the end of the trade you should see a nice balance of WBNB tokens in your account.
+
+Side Note:
+
+ You can plug your moralis speedy node into the truffle-config, helper.js, and initialization.js files if you want to connect the project to the main net. You can scan the main net without deploying the contracts by settting isLocal to false and isDeployed to false in the config.json file. Much more testing is needed before moving to a full main net implementation and more exchnanges and token pairs should be added to scan for more opportunities. If you deploy this current test bot to the main net you can and likely will lose money in the form of gas fees. 
+
